@@ -1,0 +1,67 @@
+﻿@model IPagedList<BookStore.Models.Order>
+@using PagedList;
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<br />
+<div class="container my-5 ">
+    <h2 class="text-center">Orders</h2>
+    <br />
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.First().UserDetail.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().UserDetail.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().UserDetail.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().OrderDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().BookDetail.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().BookDetail.InternationalNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().BookDetail.Url)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserDetail.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserDetail.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserDetail.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookDetail.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookDetail.InternationalNumber)
+                </td>
+                <td>
+                    <img src="@Url.Content(item.BookDetail.Url)" alt="@Html.Raw(item.BookDetail.Tittle)" class="bookImage" />
+                </td>
+            </tr>
+        }
+    </table>
+    @Html.PagedListPager(Model, page => Url.Action("Index", "BookDetails", new { page }), new PagedListRenderOptions { Display = PagedListDisplayMode.IfNeeded, DisplayItemSliceAndTotal = true })
+</div>

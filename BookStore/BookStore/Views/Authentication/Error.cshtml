@@ -1,0 +1,22 @@
+﻿<div class="container mt-5 pt-5">
+    <div class="card-body mt-5 text-center text-capitalize signUpForm">
+        <h1>Error.</h1>
+        <h2>An error occurred while processing your request.</h2>
+        @if (Session["UserRole"] != null)
+        {
+            if (Session["UserRole"].ToString() == "1")
+            {
+                <p>@Html.ActionLink("Back to home page.", "Books", "BookDetails", null, new { @class = "btn  btn-success" })</p>
+            }
+            if (Session["UserRole"].ToString() == "2")
+            {
+                <p>@Html.ActionLink("Back to home page.", "AvailableBooks", "UserDetails", null, new { @class = "btn  btn-success" })</p>
+            }
+        }
+        else
+        {
+            <p>Please Sign In again.</p>
+            <p>@Html.ActionLink("SignIn", "SignIn", "Authentication", null, new { @class = "btn  btn-success" })</p>
+        }
+    </div>
+</div>

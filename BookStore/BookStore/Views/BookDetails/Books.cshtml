@@ -1,0 +1,73 @@
+﻿@model IEnumerable<BookStore.Models.BookDetail>
+
+@{
+    ViewBag.Title = "Books";
+}
+
+<h2>Books</h2>
+<div class="container">
+    <div class="row float-right">
+        @Html.ActionLink("Create New", "Create", "BookDetails", new { @class = "btn btn-success  ml-5  mt-5 mb-2  " })
+    </div>
+</div>
+<div class="container ">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Url)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tittle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AuthorDetail.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Language)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Supplier)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Publisher)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="@Url.Content(item.Url)" alt="@Html.Raw(item.Tittle)" class="bookImage" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tittle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AuthorDetail.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Language)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Supplier)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Publisher)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.ISBN }, new { @class = "btn btn-info m-1" })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ISBN }, new { @class = "btn btn-outline-primary m-1" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ISBN }, new { @class = "btn btn-danger m-1" })
+                </td>
+            </tr>
+        }
+    </table>
+</div>

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<BookStore.Models.AuthorDetail>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<br />
+<div class="container">
+    <div class="row float-right">
+        @Html.ActionLink("Add Author", "AddAuthor", "BookDetails", new { @class = "btn btn-success  ml-5  mt-5 mb-2  " })
+    </div>
+</div>
+<div class="container">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfBirth)
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOfBirth)
+                </td>
+            </tr>
+        }
+    </table>
+    <div>
+        @Html.ActionLink("Check Books", "Books", null, new { @class = "btn btn-info m-1 float-right" })
+        @Html.ActionLink("Add Book", "Create", null, new { @class = "btn btn-info m-1 float-right" })
+    </div>
+</div>

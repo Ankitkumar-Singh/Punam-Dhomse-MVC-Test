@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "AvailableBooks";
+}
+@using BookStore.Models;
+<br />
+<br />
+<h2 class="text-center m-5">Available Books</h2>
+<div class="container ">
+    <table class="table">
+        <tr>
+            <th>Image</th>
+            <th>Title</th>
+            <th> Author Name </th>
+            <th>Language</th>
+            <th>Supplier</th>
+            <th>Publisher</th>
+            <th>Price</th>
+            <th></th>
+        </tr>
+
+        @foreach (BookDetail item in ViewBag.products)
+        {
+            <tr>
+                <td>
+                    <img src="@Url.Content(item.Url)" alt="@Html.Raw(item.Tittle)" class="bookImage" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tittle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AuthorDetail.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Language)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Supplier)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Publisher)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td align="center">
+                    @Html.ActionLink("Add To Cart", "Buy", "AddCart", new { id = item.ISBN }, new { @class = "btn btn-info m-1 float-right" })
+                </td>
+            </tr>
+        }
+    </table>
+</div>

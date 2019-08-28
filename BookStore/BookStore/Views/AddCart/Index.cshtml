@@ -1,0 +1,49 @@
+﻿@model IEnumerable<BookStore.Models.BookDetail>
+@using BookStore.Models;
+
+<!DOCTYPE html>
+<h2>Create</h2>
+<br />
+<br />
+<div class="container mb-5 ">
+    <hr class="hr">
+    <div>
+        <div>
+            @if ((List<Cart>)Session["cart"] == null)
+            {
+                <p> Please select Books.</p>
+            }
+            else
+            {
+                foreach (Cart item in (List<Cart>)Session["cart"])
+                {
+                    <div class="row">
+                        <div class="col-md-3 ">
+                            <img src="@Url.Content(item.BookDetail.Url)" alt="@Html.Raw(item.BookDetail.Tittle)" class="img-thumbnail m-2" />
+                        </div>
+                        <div class="col-md-4 ">
+                            <p class="m-2"><b>ISBN:</b>@item.BookDetail.InternationalNumber</p>
+                            <p class="m-2"><b>Title:</b>@item.BookDetail.Tittle</p>
+                            <p class="m-2"><b>Price:</b>@item.BookDetail.Price</p>
+                            <p class="m-2"><b>Quantity:</b>@item.Quantity</p>
+                            <p class="m-2"><b>Total:</b>@(item.BookDetail.Price * item.Quantity)</p>
+                            <p class="m-2">@Html.ActionLink("Remove", "Remove", "AddCart", new { id = item.BookDetail.ISBN }, new { @class = "btn btn-danger m-1 " })</p>
+                        </div>
+                    </div>
+                    <hr />
+                }
+            }
+            @{
+                List<Cart> cart = (List<Cart>)Session["cart"];
+                var total = cart.Sum(item => item.BookDetail.Price * item.Quantity);
+                var orderId = cart.Select(item => item.BookDetail.ISBN).ToArray();
+                ViewBag.OrderIds = orderId;
+            }
+        </div>
+    </div>
+    @Html.ActionLink("Buy Now", "CashOnDelivery", "AddCart", new { orderIds = Json.Encode(ViewBag.OrderIds) }, new { @class = "btn btn-info m-1 float-right", onclick = "return confirm('Order placed successfully')" })
+    @Html.ActionLink("Continue Shopping", "AvailableBooks", "UserDetails", null, new { @class = "btn btn-info m-1 float-right" })
+    <h3>
+        Total Bill: @total
+    </h3>
+</div>

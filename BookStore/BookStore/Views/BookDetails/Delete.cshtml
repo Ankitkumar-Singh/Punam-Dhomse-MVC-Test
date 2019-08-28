@@ -1,0 +1,123 @@
+﻿@model BookStore.Models.BookDetail
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+<br />
+<div class="container mb-5 ">
+    <br />
+    <div class="card-body m-5 p-5 shadow mh-100 ">
+        <h3 class="text-danger  ">Are you sure you want to delete this?</h3>
+        <hr />
+        <div class="row">
+            <div class="col-md-2">
+                <b>@Html.DisplayNameFor(model => model.Url)</b>
+            </div>
+            <div class="col-md-1">
+                :
+            </div>
+            <div class="col-md-2">
+                <img src="@Url.Content(Model.Url)" alt="@Html.Raw(Model.Tittle)" class="bookImage" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <b> @Html.DisplayNameFor(model => model.Tittle)</b>
+            </div>
+            <div class="col-md-1">
+                :
+            </div>
+            <div class="col-md-2">
+                @Html.DisplayFor(model => model.Tittle)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <b> @Html.DisplayNameFor(model => model.InternationalNumber)</b>
+            </div>
+            <div class="col-md-1">
+                :
+            </div>
+            <div class="col-md-2">
+                @Html.DisplayFor(model => model.InternationalNumber)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <b>@Html.DisplayNameFor(model => model.AuthorDetail.Name)</b>
+            </div>
+            <div class="col-md-1">
+                :
+            </div>
+            <div class="col-md-2">
+                @Html.DisplayFor(model => model.AuthorDetail.Name)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <b> @Html.DisplayNameFor(model => model.Language)</b>
+            </div>
+            <div class="col-md-1">
+                :
+            </div>
+            <div class="col-md-2">
+                @Html.DisplayFor(model => model.Language)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <b>@Html.DisplayNameFor(model => model.Supplier)</b>
+            </div>
+            <div class="col-md-1">
+                :
+            </div>
+            <div class="col-md-2">
+                @Html.DisplayFor(model => model.Supplier)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <b>@Html.DisplayNameFor(model => model.Publisher)</b>
+            </div>
+            <div class="col-md-1">
+                :
+            </div>
+            <div class="col-md-2">
+                @Html.DisplayFor(model => model.Publisher)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <b>@Html.DisplayNameFor(model => model.Price)</b>
+            </div>
+            <div class="col-md-1">
+                :
+            </div>
+            <div class="col-md-2">
+                @Html.DisplayFor(model => model.Price)
+            </div>
+        </div>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-actions no-color mt-5">
+                <div class="form-actions no-color mt-5">
+                    <input type="submit" value="Delete" class="btn btn-default btn-danger" />
+                    @Html.ActionLink("Cancel", "Books", "BooksDetails", new { @class = "btn btn-info" })
+                </div>
+
+            </div>
+        }
+    </div>
+</div>
+
+
