@@ -13,9 +13,9 @@ namespace BookStore.Models
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
+    #region "User Details"
     public partial class UserDetail
-    {
-        #region "User Details"
+    { 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public UserDetail()
         {

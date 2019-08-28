@@ -13,9 +13,9 @@ namespace BookStore.Models
     using System.ComponentModel.DataAnnotations;
     using System.Web;
 
+    #region "Books Details"
     public partial class BookDetail
     {
-        #region "Books Details"
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public BookDetail()
         {

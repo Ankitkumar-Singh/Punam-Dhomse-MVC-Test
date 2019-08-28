@@ -13,9 +13,11 @@ namespace BookStore.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+
+    #region "Author Details"
     public partial class AuthorDetail
     {
-        #region "Author Details"
+        
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public AuthorDetail()
         {
